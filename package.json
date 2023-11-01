@@ -1,8 +1,8 @@
 {
-  "name": "vscode-kanbn",
-  "displayName": "Kanbn Extension for Visual Studio Code",
-  "description": "An extension for Visual Studio Code that allows you to manage tasks on a kanban board.",
-  "icon": "resources/kanbn.png",
+  "name": "vscode-giraffe-kanban",
+  "displayName": "Giraffe Kanban Extension for Visual Studio Code",
+  "description": "An extension for Visual Studio Code that allows you to manage tasks on a kanban board. A maintained fork of vscode-kanbn.",
+  "icon": "resources/giraffe-kanban-logo.png",
   "galleryBanner": {
     "color": "#72abdd",
     "theme": "dark"
@@ -15,6 +15,7 @@
   "license": "MIT",
   "publisher": "wkuang",
   "keywords": [
+    "giraffe",
     "kanbn",
     "kanban",
     "project",
@@ -24,7 +25,8 @@
     "agile",
     "scrum",
     "sprint",
-    "board"
+    "board",
+    "backlog"
   ],
   "categories": [
     "Visualization",
@@ -32,7 +34,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/basementuniverse/vscode-kanbn.git"
+    "url": "https://github.com/uuykay/vscode-kanbn.git"
   },
   "activationEvents": [
     "onStartupFinished"
@@ -41,58 +43,58 @@
   "contributes": {
     "commands": [
       {
-        "command": "kanbn.init",
-        "title": "Initialise Kanbn",
-        "category": "Kanbn"
+        "command": "giraffe.kanban.init",
+        "title": "Initialise Giraffe Kanban",
+        "category": "Giraffe Kanban"
       },
       {
-        "command": "kanbn.board",
+        "command": "giraffe.kanban.board",
         "title": "Open board",
-        "category": "Kanbn"
+        "category": "Giraffe Kanban"
       },
       {
-        "command": "kanbn.addTask",
+        "command": "giraffe.kanban.addTask",
         "title": "Add task",
-        "category": "Kanbn"
+        "category": "Giraffe Kanban"
       },
       {
-        "command": "kanbn.burndown",
+        "command": "giraffe.kanban.burndown",
         "title": "Open burndown chart",
-        "category": "Kanbn"
+        "category": "Giraffe Kanban"
       },
       {
-        "command": "kanbn.archiveTasks",
+        "command": "giraffe.kanban.archiveTasks",
         "title": "Archive tasks",
-        "category": "Kanbn"
+        "category": "Giraffe Kanban"
       },
       {
-        "command": "kanbn.restoreTasks",
+        "command": "giraffe.kanban.restoreTasks",
         "title": "Restore tasks",
-        "category": "Kanbn"
+        "category": "Giraffe Kanban"
       }
     ],
     "configuration": {
-      "title": "Kanbn",
+      "title": "Giraffe Kanban",
       "properties": {
-        "kanbn.showUninitialisedStatusBarItem": {
+        "giraffe.kanban.showUninitialisedStatusBarItem": {
           "type": "boolean",
           "default": true,
-          "description": "Show the status bar item in workspaces where Kanbn has not yet been initialised."
+          "description": "Show the status bar item in workspaces where Giraffe Kanban has not yet been initialised."
         },
-        "kanbn.showTaskNotifications": {
+        "giraffe.kanban.showTaskNotifications": {
           "type": "boolean",
           "default": true,
           "description": "Show notifications when a task is created, updated or deleted."
         },
-        "kanbn.showSprintButton": {
+        "giraffe.kanban.showSprintButton": {
           "type": "boolean",
           "default": false,
-          "description": "Show a 'Start sprint' button on the Kanbn board."
+          "description": "Show a 'Start sprint' button on the Giraffe Kanban board."
         },
-        "kanbn.showBurndownButton": {
+        "giraffe.kanban.showBurndownButton": {
           "type": "boolean",
           "default": false,
-          "description": "Show a 'Burndown chart' button on the Kanbn board."
+          "description": "Show a 'Burndown chart' button on the Giraffe Kanban board."
         }
       }
     }

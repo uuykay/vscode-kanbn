@@ -10,10 +10,10 @@ export async function activate(context: vscode.ExtensionContext) {
   // Register a command to initialise Kanbn in the current workspace. This command will be invoked when the status
   // bar item is clicked in a workspace where Kanbn isn't already initialised.
   context.subscriptions.push(
-    vscode.commands.registerCommand("kanbn.init", async () => {
+    vscode.commands.registerCommand("giraffe.kanban.init", async () => {
       // If no workspace folder is opened, we can't initialise kanbn
       if (vscode.workspace.workspaceFolders === undefined) {
-        vscode.window.showErrorMessage("You need to open a workspace before initialising Kanbn.");
+        vscode.window.showErrorMessage("You need to open a workspace before initialising Giraffe Kanban.");
         return;
       }
 
@@ -41,7 +41,7 @@ export async function activate(context: vscode.ExtensionContext) {
         await kanbn.initialise({
           name: newProjectName,
         });
-        vscode.window.showInformationMessage(`Initialised Kanbn project '${newProjectName}'.`);
+        vscode.window.showInformationMessage(`Initialised Giraffe Kanban project '${newProjectName}'.`);
         KanbnBoardPanel.update();
       }
       kanbnStatusBarItem.update();
@@ -51,10 +51,11 @@ export async function activate(context: vscode.ExtensionContext) {
   // Register a command to open the kanbn board. This command will be invoked when the status bar item is clicked
   // in a workspace where kanbn has already been initialised.
   context.subscriptions.push(
-    vscode.commands.registerCommand("kanbn.board", async () => {
+    vscode.commands.registerCommand("giraffe.kanban.board", async () => {
+
       // If no workspace folder is opened, we can't open the kanbn board
       if (vscode.workspace.workspaceFolders === undefined) {
-        vscode.window.showErrorMessage("You need to open a workspace before viewing the Kanbn board.");
+        vscode.window.showErrorMessage("You need to open a workspace before viewing the Giraffe Kanban board.");
         return;
       }
 
@@ -64,15 +65,22 @@ export async function activate(context: vscode.ExtensionContext) {
 
       // If kanbn is initialised, view the kanbn board
       if (await kanbn.initialised()) {
+
+        const folderName = await kanbn.getFolderName();
+        const workspaceFolderFsPath =  vscode.workspace.workspaceFolders[0].uri.fsPath
+
+        vscode.window.showErrorMessage(`Err 2, ${context.extensionPath}, ${workspaceFolderFsPath}, ${kanbn}, ${folderName}`);
         KanbnBoardPanel.createOrShow(
-          context.extensionPath,
-          vscode.workspace.workspaceFolders[0].uri.fsPath,
+          context.extensionPath || '',
+          workspaceFolderFsPath || '',
           kanbn,
-          await kanbn.getFolderName()
+          folderName
         );
+        vscode.window.showErrorMessage(`Err 3`)
         KanbnBoardPanel.update();
+        vscode.window.showErrorMessage(`Err 4`)
       } else {
-        vscode.window.showErrorMessage("You need to initialise Kanbn before viewing the Kanbn board.");
+        vscode.window.showErrorMessage("You need to initialise Giraffe Kanban before viewing the Kanban board.");
       }
       kanbnStatusBarItem.update();
     })
@@ -80,7 +88,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register a command to add a new kanbn task.
   context.subscriptions.push(
-    vscode.commands.registerCommand("kanbn.addTask", async () => {
+    vscode.commands.registerCommand("giraffe.kanban.addTask", async () => {
       // If no workspace folder is opened, we can't add a new task
       if (vscode.workspace.workspaceFolders === undefined) {
         vscode.window.showErrorMessage("You need to open a workspace before adding a new task.");
@@ -109,7 +117,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register a command to open a burndown chart.
   context.subscriptions.push(
-    vscode.commands.registerCommand("kanbn.burndown", async () => {
+    vscode.commands.registerCommand("giraffe.kanban.burndown", async () => {
       // If no workspace folder is opened, we can't open the burndown chart
       if (vscode.workspace.workspaceFolders === undefined) {
         vscode.window.showErrorMessage("You need to open a workspace before viewing the burndown chart.");
@@ -130,7 +138,7 @@ export async function activate(context: vscode.ExtensionContext) {
         );
         KanbnBurndownPanel.update();
       } else {
-        vscode.window.showErrorMessage("You need to initialise Kanbn before viewing the burndown chart.");
+        vscode.window.showErrorMessage("You need to initialise Giraffe Kanban before viewing the burndown chart.");
       }
       kanbnStatusBarItem.update();
     })
@@ -138,7 +146,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register a command to archive tasks.
   context.subscriptions.push(
-    vscode.commands.registerCommand("kanbn.archiveTasks", async () => {
+    vscode.commands.registerCommand("giraffe.kanban.archiveTasks", async () => {
       // If no workspace folder is opened, we can't archive tasks
       if (vscode.workspace.workspaceFolders === undefined) {
         vscode.window.showErrorMessage("You need to open a workspace before sending tasks to the archive.");
@@ -184,7 +192,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register a command to restore a task from the archive.
   context.subscriptions.push(
-    vscode.commands.registerCommand("kanbn.restoreTasks", async () => {
+    vscode.commands.registerCommand("giraffe.kanban.restoreTasks", async () => {
       // If no workspace folder is opened, we can't restore tasks from the archive
       if (vscode.workspace.workspaceFolders === undefined) {
         vscode.window.showErrorMessage("You need to open a workspace before restoring tasks from the archive.");
