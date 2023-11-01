@@ -163,7 +163,7 @@ export default class KanbnBoardPanel {
             return;
 
           // Create a task
-          case "kanbn.addTask":
+          case "giraffe.kanban.addTask":
             KanbnTaskPanel.show(
               this._extensionPath,
               this._workspacePath,
@@ -243,7 +243,7 @@ export default class KanbnBoardPanel {
             return;
 
           // Open a burndown chart
-          case "kanbn.burndown":
+          case "giraffe.kanban.burndown":
             KanbnBurndownPanel.createOrShow(
               this._extensionPath,
               this._workspacePath,

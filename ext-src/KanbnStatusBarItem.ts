@@ -46,12 +46,12 @@ export default class KanbnStatusBarItem {
       }
       this._statusBarItem.text = text.join(' ');
       this._statusBarItem.tooltip = tooltip.join('\n');
-      this._statusBarItem.command = 'kanbn.board';
+      this._statusBarItem.command = 'giraffe.kanban.board';
       this._statusBarItem.show();
     } else {
       this._statusBarItem.text = '$(project)';
-      this._statusBarItem.tooltip = 'Initialise Kanbn';
-      this._statusBarItem.command = 'kanbn.init';
+      this._statusBarItem.tooltip = 'Initialise Giraffe Kanban';
+      this._statusBarItem.command = 'giraffe.kanban.init';
       if (vscode.workspace.getConfiguration('kanbn').get('showUninitialisedStatusBarItem')) {
         this._statusBarItem.show();
       } else {

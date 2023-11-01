@@ -1,4 +1,6 @@
-# Kanbn Extension for Visual Studio Code
+# Girafee Kanban Extension for Visual Studio Code
+
+![Giraffe Kanban](resources/giraffe-kanban-logo.png "Kanbn")
 
 ![Marketplace version](https://vsmarketplacebadge.apphb.com/version-short/gordonlarrigan.vscode-kanbn.svg?color=lightblue) ![Marketplace installs](https://vsmarketplacebadge.apphb.com/installs-short/gordonlarrigan.vscode-kanbn.svg?color=lightblue) ![Marketplace rating](https://vsmarketplacebadge.apphb.com/rating-short/gordonlarrigan.vscode-kanbn.svg?color=lightblue) [![MIT License](https://img.shields.io/github/license/basementuniverse/vscode-kanbn?color=orange)](https://opensource.org/licenses/MIT)
 
